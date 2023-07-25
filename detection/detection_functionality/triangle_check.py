@@ -3,7 +3,7 @@ import numpy as np
 
 import math
 
-def check_triangle(df, max_length):
+def get_triangle(df, max_length):
     xmins = df.index[(df["high_low"] == -1) | (df["high_low"] == 3)].to_list()
     ymins = df.iloc[xmins]["low"].to_list()
 

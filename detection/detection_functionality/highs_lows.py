@@ -1,12 +1,14 @@
 def mark_highs_lows(df, num_before, num_after):
-    if len(df) == 0:
-        df["highLow"] = []
+    df_copy = df.copy()
+
+    if len(df_copy) == 0:
+        df_copy["highLow"] = []
     else:
-        df["highLow"] = df.apply(
-            lambda row: check_high_low(df, row.name, num_before, num_after), axis=1
+        df_copy["highLow"] = df_copy.apply(
+            lambda row: check_high_low(df_copy, row.name, num_before, num_after), axis=1
         )
 
-    return df
+    return df_copy
 
 def check_high_low(df, candlestick_num, num_before, num_after):
     # if tested candlestick is out of bounds of data
