@@ -1,7 +1,16 @@
 # holds the pandas dataframe containing price data
 class PriceData:
-    def __init__(self):
+    def __init__(self, ticker):
         self._price_data = None
+        self._ticker = ticker
+
+    # ticker
+
+    @property
+    def ticker(self):
+        return self._ticker
+
+    # price data
 
     @property
     def price_data(self):
