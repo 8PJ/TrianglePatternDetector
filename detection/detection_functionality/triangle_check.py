@@ -1,3 +1,5 @@
+from detection.triangle import Triangle
+
 from scipy import stats
 import numpy as np
 
@@ -54,24 +56,19 @@ def find_triangle(xmins, ymins, xmaxes, ymaxes, max_length):
     if not is_valid_triangle_shape or slopeMax == slopeMin:
         return None
 
-    startX = min(xmins[0], xmaxes[0])
-    endX = max(xmins[-1], xmaxes[-1])
-    endCrossX = math.floor(
+    start_x = min(xmins[0], xmaxes[0])
+    end_cross_x = math.floor(
         (intersectMin - intersectMax) / (slopeMax - slopeMin)
     )  # point where two lines meet
 
     # if triangle is longer than max length
-    if endCrossX - startX + 1 > max_length:
+    if end_cross_x - start_x + 1 > max_length:
         return None
 
-    xs = np.array([startX, endX, endCrossX])
+    xs = np.array([start_x, end_cross_x])
     ysMin = xs * slopeMin + intersectMin
     ysMax = xs * slopeMax + intersectMax
 
-    triangle = (
-        (xs, ysMin),
-        (xs, ysMax),
-        (intersectMin, slopeMin),
-        (intersectMax, slopeMax),
-    )
+    triangle = Triangle(start_x, end_cross_x, ysMax[0], ysMin[0], ysMax[1], ysMin[1])
+
     return triangle
