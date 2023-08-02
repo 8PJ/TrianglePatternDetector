@@ -3,7 +3,6 @@ from unittest.mock import patch
 
 import pytest
 
-# Test case for making a request and getting data
 def test_successful_request_and_data_retrieval():
     trading_pair = "BTCUSDT"
     timeframe = "1h"
@@ -20,7 +19,6 @@ def test_successful_request_and_data_retrieval():
 
     assert response == mock_response_json
 
-# Test case for invalid timeframe
 def test_invalid_timeframe_raises_value_error():
     trading_pair = "BTCUSDT"
     timeframe = "?h"

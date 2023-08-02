@@ -1,5 +1,6 @@
+from datetime import datetime
+
 import pandas as pd
-import datetime
 
 def format_bincance(candlestick_data):
     processed_json = []
@@ -13,7 +14,7 @@ def format_bincance(candlestick_data):
             "low": float(candlestick[3]),
             "volume": float(candlestick[7]),
             "number_transactions": float(candlestick[8]),
-            "time": str(datetime.fromtimestamp(candlestick[0] / 1000))
+            "datetime": str(datetime.fromtimestamp(candlestick[0] / 1000))
         }
 
         processed_json.append(processed_candlestick)
