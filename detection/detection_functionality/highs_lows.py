@@ -19,11 +19,13 @@ def check_high_low(df, candlestick_num, num_before, num_after):
         return 0
 
     # find high/low of the interval (not including the current candlestick)
-    intervalLowBefore = df.iloc[candlestick_num - num_before : candlestick_num - 1]["low"].min()
+    intervalLowBefore = df.iloc[candlestick_num - num_before : candlestick_num]["low"].min()
     intervalLowAfter = df.iloc[candlestick_num + 1 : candlestick_num + num_after]["low"].min()
 
-    intervalHighBefore = df.iloc[candlestick_num - num_before : candlestick_num - 1]["high"].max()
+    intervalHighBefore = df.iloc[candlestick_num - num_before : candlestick_num]["high"].max()
     intervalHighAfter = df.iloc[candlestick_num + 1 : candlestick_num + num_after]["high"].max()
+
+    print(f"{candlestick_num}: ", intervalLowBefore, intervalLowAfter)
 
     # a candlestick is a low when it's low price is lower or equal than neighbours to the left and
     # lower (not equal) than neighbours to the right
