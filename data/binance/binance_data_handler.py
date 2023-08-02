@@ -5,6 +5,9 @@ from data.binance.binance_api import get_klines_data
 from data.price_data import PriceData
 
 class BinanceDataHandeler(DataHandlerInterface):
+    def __init__(self):
+        self.valid_intervals = ["1s", "1m", "3m", "5m", "15m", "30m", "1h", "2h", "4h", "6h", "8h", "12h", "1d", "3d", "1w", "1M"]
+
     def retrieve_data(self, trading_pair, timeframe, candlestick_limit):
         price_data_json = get_klines_data(trading_pair, timeframe, candlestick_limit)
         formatted_price_data_df = format_bincance(price_data_json)
