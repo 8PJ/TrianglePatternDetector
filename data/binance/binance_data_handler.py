@@ -9,6 +9,9 @@ class BinanceDataHandeler(DataHandlerInterface):
         self.valid_intervals = ["1s", "1m", "3m", "5m", "15m", "30m", "1h", "2h", "4h", "6h", "8h", "12h", "1d", "3d", "1w", "1M"]
 
     def retrieve_data(self, trading_pair, timeframe, candlestick_limit):
+        if timeframe not in self.valid_intervals:
+            raise ValueError(f"invalid timeframe value: '{timeframe}'")
+        
         price_data_json = get_klines_data(trading_pair, timeframe, candlestick_limit)
         formatted_price_data_df = format_bincance(price_data_json)
 

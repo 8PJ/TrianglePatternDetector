@@ -19,14 +19,6 @@ def test_successful_request_and_data_retrieval():
 
     assert response == mock_response_json
 
-def test_invalid_timeframe_raises_value_error():
-    trading_pair = "BTCUSDT"
-    timeframe = "?h"
-    candlestick_limit = 5
-
-    with pytest.raises(ValueError):
-        get_klines_data(trading_pair, timeframe, candlestick_limit)
-
 # Test case for raising an exception for non 200 API response code
 def test_invalid_api_response_raises_exception():
     trading_pair = "BTCUSDT"

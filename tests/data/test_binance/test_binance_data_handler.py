@@ -8,6 +8,14 @@ def data_handler_instance():
     data_handler = BinanceDataHandeler()
     return data_handler
 
+def test_invalid_timeframe_raises_value_error(data_handler_instance):
+    trading_pair = "BTCUSDT"
+    timeframe = "?h"
+    candlestick_limit = 5
+
+    with pytest.raises(ValueError):
+        data_handler_instance.retrieve_data(trading_pair, timeframe, candlestick_limit)
+
 def test_returned_price_data_has_correct_trading_pair(data_handler_instance):
     trading_pair = "BTCUSDT"
     timeframe = "1h"
