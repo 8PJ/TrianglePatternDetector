@@ -24,3 +24,8 @@ def test_triangle_detector_returns_triangle(triangle_detector_instance:TriangleD
     triangle = triangle_detector_instance.get_triangle_if_exists(api_data, 3, 3, 100)
 
     assert triangle is not None
+
+def test_triangle_detector_returns_none_for_impossible_triangle(triangle_detector_instance:TriangleDetector, api_data:PriceData):
+    triangle = triangle_detector_instance.get_triangle_if_exists(api_data, 3, 3, -1)
+
+    assert triangle is None
