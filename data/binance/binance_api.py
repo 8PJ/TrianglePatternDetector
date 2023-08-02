@@ -13,7 +13,7 @@ def get_klines_data(trading_pair, timeframe, candlestick_limit):
     # api requests are limited to 1000 candlesticks
     candlestick_limit = min(candlestick_limit, 1000)
 
-    params = {"symbol": trading_pair, "interval": timeframe, "limit": 1000}
+    params = {"symbol": trading_pair, "interval": timeframe, "limit": candlestick_limit}
     response = make_binance_api_request(klines_url, params=params)
 
     if response.status_code != 200:
