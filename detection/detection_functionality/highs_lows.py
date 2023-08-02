@@ -2,9 +2,9 @@ def mark_highs_lows(df, num_before, num_after):
     df_copy = df.copy()
 
     if len(df_copy) == 0:
-        df_copy["highLow"] = []
+        df_copy["high_low"] = []
     else:
-        df_copy["highLow"] = df_copy.apply(
+        df_copy["high_low"] = df_copy.apply(
             lambda row: check_high_low(df_copy, row.name, num_before, num_after), axis=1
         )
 

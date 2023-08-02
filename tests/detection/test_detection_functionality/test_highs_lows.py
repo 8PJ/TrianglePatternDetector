@@ -44,7 +44,7 @@ def test_marks_high_point(high_low_data):
     df = pd.DataFrame(high_low_data)
     df_with_hl = mark_highs_lows(df, 3, 3)
 
-    assert df_with_hl["highLow"][3] == 1
+    assert df_with_hl["high_low"][3] == 1
 
 def test_marks_low_point(high_low_data):
     high_low_data["low"] = [4, 3, 2, 1, 2, 3, 4]
@@ -52,7 +52,7 @@ def test_marks_low_point(high_low_data):
     df = pd.DataFrame(high_low_data)
     df_with_hl = mark_highs_lows(df, 3, 3)
 
-    assert df_with_hl["highLow"][3] == -1
+    assert df_with_hl["high_low"][3] == -1
 
 def test_marks_high_low_point(high_low_data):
     high_low_data["high"] = [1, 2, 3, 4, 3, 2, 1]
@@ -61,7 +61,7 @@ def test_marks_high_low_point(high_low_data):
     df = pd.DataFrame(high_low_data)
     df_with_hl = mark_highs_lows(df, 3, 3)
 
-    assert df_with_hl["highLow"][3] == 3
+    assert df_with_hl["high_low"][3] == 3
 
 def test_only_marks_last_adjacent_high_with_same_value(high_low_data):
     high_low_data["high"] = [1, 2, 4, 4, 4, 2, 1]
@@ -69,9 +69,9 @@ def test_only_marks_last_adjacent_high_with_same_value(high_low_data):
     df = pd.DataFrame(high_low_data)
     df_with_hl = mark_highs_lows(df, 2, 2)
 
-    assert df_with_hl["highLow"][2] == 0
-    assert df_with_hl["highLow"][3] == 0
-    assert df_with_hl["highLow"][4] == 1
+    assert df_with_hl["high_low"][2] == 0
+    assert df_with_hl["high_low"][3] == 0
+    assert df_with_hl["high_low"][4] == 1
 
 def test_only_marks_last_adjacent_low_with_same_value(high_low_data):
     high_low_data["low"] = [4, 3, 1, 1, 1, 3, 4]
@@ -79,7 +79,7 @@ def test_only_marks_last_adjacent_low_with_same_value(high_low_data):
     df = pd.DataFrame(high_low_data)
     df_with_hl = mark_highs_lows(df, 2, 2)
 
-    assert df_with_hl["highLow"][2] == 0
-    assert df_with_hl["highLow"][3] == 0
-    assert df_with_hl["highLow"][4] == -1
+    assert df_with_hl["high_low"][2] == 0
+    assert df_with_hl["high_low"][3] == 0
+    assert df_with_hl["high_low"][4] == -1
     
