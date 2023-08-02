@@ -10,6 +10,6 @@ class BinanceDataHandeler(DataHandlerInterface):
         formatted_price_data_df = format_bincance(price_data_json)
 
         price_data = PriceData(trading_pair)
-        price_data.price_data = formatted_price_data_df
+        price_data.price_data_df = formatted_price_data_df
 
         return price_data
