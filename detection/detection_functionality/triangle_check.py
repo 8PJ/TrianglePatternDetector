@@ -34,6 +34,7 @@ def find_triangle(xmins, ymins, xmaxes, ymaxes, max_length):
     )
 
     is_valid_triangle_shape = False
+    triangle_type = None
 
     # if there is a strong correlation
     if (
@@ -43,14 +44,17 @@ def find_triangle(xmins, ymins, xmaxes, ymaxes, max_length):
     ):
         if abs(slopeMax) <= 0.005 and slopeMin > 0:  # ascending triangle
             is_valid_triangle_shape = True
+            triangle_type = 1
         elif abs(slopeMin) <= 0.005 and slopeMax < 0:  # descending triangle
             is_valid_triangle_shape = True
+            triangle_type = -1
         elif (
             slopeMax < 0
             and slopeMin > 0
             and min(abs(slopeMax), slopeMin) / max(abs(slopeMax), slopeMin) >= 0.5
         ):  # symmetrical triangle
             is_valid_triangle_shape = True
+            triangle_type = 0
 
     # if shape is not valid or slopes are parallel
     if not is_valid_triangle_shape or slopeMax == slopeMin:
@@ -69,6 +73,6 @@ def find_triangle(xmins, ymins, xmaxes, ymaxes, max_length):
     ysMin = xs * slopeMin + intersectMin
     ysMax = xs * slopeMax + intersectMax
 
-    triangle = Triangle(start_x, end_cross_x, ysMax[0], ysMin[0], ysMax[1], ysMin[1])
+    triangle = Triangle(start_x, end_cross_x, ysMax[0], ysMin[0], ysMax[1], ysMin[1], triangle_type)
 
     return triangle
