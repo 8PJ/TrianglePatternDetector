@@ -1,4 +1,5 @@
 from main_helper.user_input.get_candlestick_limit import get_candlestick_limit
+from main_helper.user_input.get_max_triangle_len import get_max_triangle_len
 from main_helper.user_input.get_hl_num_before import get_hl_num_before
 from main_helper.user_input.get_hl_num_after import get_hl_num_after
 from main_helper.user_input.get_data_handler import get_data_handler
@@ -22,3 +23,8 @@ class UserOptions:
         self.candlestick_limit = get_candlestick_limit()
         self.hl_num_before = get_hl_num_before()
         self.hl_num_after = get_hl_num_after()
+        self.max_triangle_len = get_max_triangle_len()
+
+    def reinitialise_options(self):
+        pass # TODO
+    
