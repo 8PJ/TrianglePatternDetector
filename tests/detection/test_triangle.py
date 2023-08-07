@@ -1,10 +1,11 @@
 from detection.triangle import Triangle
+from datetime import datetime
 
 import pytest
 
 @pytest.fixture
 def triangle_instance():
-    triangle = Triangle(0, 50, 50, 10, 30, 30, 0)
+    triangle = Triangle(0, 50, 50, 10, 30, 30, 0, datetime(2023, 8, 7, 13, 33, 57))
     return triangle
 
 def test_returns_correct_list_of_xs(triangle_instance:Triangle):
@@ -24,4 +25,4 @@ def test_returns_correct_list_of_low_ys(triangle_instance:Triangle):
 
 def test_rejects_invalid_triangle_type():
     with pytest.raises(ValueError):
-        Triangle(0, 50, 50, 10, 30, 30, 2)
+        Triangle(0, 50, 50, 10, 30, 30, 2, datetime(2023, 8, 7, 13, 33, 57))

@@ -15,7 +15,9 @@ def get_triangle(df, max_length):
     triangle = None
 
     if check_sufficient_points(xmins, xmaxes):
-        triangle = find_triangle(xmins, ymins, xmaxes, ymaxes, max_length)
+        triangle_start_x = min(xmins[0], xmaxes[0])
+        triangle_start_datetime = df.iloc[triangle_start_x]["datetime"]
+        triangle = find_triangle(xmins, ymins, xmaxes, ymaxes, max_length, triangle_start_datetime)
 
     return triangle
 
@@ -25,7 +27,7 @@ def check_sufficient_points(xmins, xmaxes):
     return (len(xmins) + len(xmaxes) >= 5) and len(xmins) >= 2 and len(xmaxes) >= 2
 
 
-def find_triangle(xmins, ymins, xmaxes, ymaxes, max_length):
+def find_triangle(xmins, ymins, xmaxes, ymaxes, max_length, triangle_start_datetime):
     slopeMin, intersectMin, rvalueMin, pvalueMin, stderrMin = stats.linregress(
         xmins, ymins
     )
@@ -73,6 +75,6 @@ def find_triangle(xmins, ymins, xmaxes, ymaxes, max_length):
     ysMin = xs * slopeMin + intersectMin
     ysMax = xs * slopeMax + intersectMax
 
-    triangle = Triangle(start_x, end_cross_x, ysMax[0], ysMin[0], ysMax[1], ysMin[1], triangle_type)
+    triangle = Triangle(start_x, end_cross_x, ysMax[0], ysMin[0], ysMax[1], ysMin[1], triangle_type, triangle_start_datetime)
 
     return triangle
