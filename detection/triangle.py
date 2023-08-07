@@ -21,6 +21,15 @@ class Triangle:
         return self._type
     
     @property
+    def type_string(self):
+        if self.type == -1:
+            return "descending"
+        elif self.type == 0:
+            return "symmetrical"
+        else:
+            return "ascending"
+    
+    @property
     def start_datetime(self):
         return self._start_datetime
 
