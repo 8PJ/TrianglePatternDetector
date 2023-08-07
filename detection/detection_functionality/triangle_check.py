@@ -63,12 +63,14 @@ def find_triangle(xmins, ymins, xmaxes, ymaxes, max_length, triangle_start_datet
         return None
 
     start_x = min(xmins[0], xmaxes[0])
+    end_x = max(xmins[-1], xmaxes[-1])
+
     end_cross_x = math.floor(
         (intersectMin - intersectMax) / (slopeMax - slopeMin)
     )  # point where two lines meet
 
     # if triangle is longer than max length
-    if end_cross_x - start_x + 1 > max_length:
+    if end_cross_x < end_x or (end_cross_x - start_x + 1) > max_length:
         return None
 
     xs = np.array([start_x, end_cross_x])
