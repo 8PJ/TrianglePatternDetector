@@ -41,3 +41,6 @@ class Triangle:
     
     def get_low_ys(self):
         return [self.start_low_y, self.end_low_y]
+    
+    def __str__(self):
+        return f"start datetime: {self.start_datetime}, type: {self.type_string}, x: {self.get_xs()}, high_y: {self.get_high_ys()}, low_y: {self.get_low_ys()}"
