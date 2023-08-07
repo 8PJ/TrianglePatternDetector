@@ -26,5 +26,4 @@ class UserOptions:
         self.max_triangle_len = get_max_triangle_len()
 
     def reinitialise_options(self):
-        pass # TODO
-    
+        pass # TODO for each propertu redo initialisation unless user input is empty
