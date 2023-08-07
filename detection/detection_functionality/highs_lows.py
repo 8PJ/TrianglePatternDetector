@@ -14,7 +14,7 @@ def check_high_low(df, candlestick_num, num_before, num_after):
     # if tested candlestick is out of bounds of data
     if (
         candlestick_num - num_before < df.iloc[0].name
-        or candlestick_num + num_after > df.iloc[-1].name
+        or candlestick_num > df.iloc[-1].name
     ):
         return 0
 
