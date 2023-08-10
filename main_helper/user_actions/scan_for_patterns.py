@@ -8,15 +8,11 @@ def scan_for_patterns(options: UserOptions):
     scan_results_map = perform_scan(options, price_data_map)
 
     for (ticker, interval), triangle in scan_results_map.items():
-        print(f"{ticker} ({interval}):")
-
-        if triangle is None:
-            print("- not found")
-        else:
+        if triangle is not None:
+            print(f"{ticker} ({interval}):")
             print(triangle)
-            # print(f"- Found at: {triangle.start_datetime}, type: {triangle.type_string}")
 
-        print("")
+            print("")
 
 
 def get_price_data_map(options: UserOptions):
